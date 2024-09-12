@@ -29,7 +29,7 @@ public class UtmDatabaseManager {
 
 		  try {
 			  dbConnection = DriverManager.getConnection("JDBC:mysql://"
-	         		+ ""
+	         		+ "localhost"
 	         		+ ":3306/"
 	         		+ "" // имя юзера
 	         		+ "?wait_timeout=30&autoReconnect=true&useUnicode=true&characterEncoding=utf-8", 

@@ -32,7 +32,7 @@ public class UtmStorage {
 	 */
 	public boolean handleBotStartUtmQuery(String inputText) {
 
-		if (inputText.contains("start") && inputText.contains("traffic")) {
+		if (inputText.contains("/start") && inputText.contains("traffic=") && inputText.contains("id=")) {
 
 			String utm = inputText.replace("/start ", "");
 			String traffic = utm.split("-")[1].replace("traffic=", "");

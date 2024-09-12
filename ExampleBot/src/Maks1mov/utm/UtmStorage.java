@@ -23,11 +23,11 @@ public class UtmStorage {
 	}
 
 	 /**
-	 * Пример ссылки - https://t.me/maks1movtest_bot?start=id=1-traffic=ads
-	 * Вставлять код в обработчике телеграм бота, когда кто-то пишет в него!
+	 *  Пример ссылки - https://t.me/maks1movtest_bot?start=id=1-traffic=ads. 
+	 *  Вставлять код в обработчике телеграм бота, когда кто-то пишет в него! 
 	 * 
-	 * boolean возвращает true тогда, когда метка у ссылки была обнаружена,
-	 * а данные о переходе были добавлены в таблицу mysql
+	 *  boolean возвращает true тогда, когда метка у ссылки была обнаружена, 
+	 *  а данные о переходе были добавлены в таблицу mysql
 	 * 
 	 */
 	public boolean handleBotStartUtmQuery(String inputText) {

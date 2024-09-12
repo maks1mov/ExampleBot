@@ -13,11 +13,11 @@ public class Bot extends TelegramLongPollingBot {
 	}
 
 	public String getBotUsername() {
-		return "oceni_anonimno_bot";
+		return "testBot";
 	}
 
 	public String getBotToken() {
-		return "7484005112:AAH0SRNfgIkI81ssJBFE5B3Rj4YPyCZRz4g";
+		return "print token here";
 	}
 
 	public void onUpdateReceived(Update update) {

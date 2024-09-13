@@ -20,7 +20,7 @@ public class UtmTelegramNotifer {
 	public UtmTelegramNotifer(UtmStorage utmStorage) {
 		this.utmStorage = utmStorage;
 	}
-	
+
 	public void sendInfoToTelegramUser(String chatId, Bot bot) {
 
 		String timeStamp = new SimpleDateFormat("dd.MM.yyyy").format(Calendar.getInstance().getTime());
@@ -39,6 +39,8 @@ public class UtmTelegramNotifer {
 					  + " 📆 Переходов за неделю: <b>" + utmStorage.getUtmDatabaseManager().getAllUtmJoinsforWeek() + " пользователей </b> \n"
 					  + " 🗓 Переходов за месяц: <b>" + utmStorage.getUtmDatabaseManager().getAllUtmJoinsforMonth() + " пользователей </b> \n"
 					  + "\n"
+					  + " <b>💸 ОПЛАТ: " + utmStorage.getUtmDatabaseManager().getAllUtmPayments() + " пользователей </b>\n"
+					  + "\n"
 					  + " 😳 Переходов за все время: <b>" + utmStorage.getUtmDatabaseManager().getAllUtmJoinsTotal() + " пользователей </b>");
 
 		try {
@@ -48,7 +50,7 @@ public class UtmTelegramNotifer {
 		}
 	}
 	
-	public void sendInfoToTelegramUserByID(String chatId, int id, Bot bot) {
+	public void sendInfoToTelegramUserById(String chatId, int id, Bot bot) {
 
 		UtmTag tag = null;
 		SendMessage message = new SendMessage();
@@ -81,6 +83,8 @@ public class UtmTelegramNotifer {
 				  + "\n"
 				  + " 📆 Переходов за неделю: <b>" + tag.getJoinsForWeek() + " пользователей </b> \n"
 				  + " 🗓 Переходов за месяц: <b>" + tag.getJoinsForMonth() + " пользователей </b> \n"
+				  + "\n"
+				  + " <b>💸 ОПЛАТ: " + tag.getPayments() + " пользователей </b>\n"
 				  + "\n"
 				  + " 😳 Переходов за все время: <b>" + tag.getJoinsForTotal() + " пользователей </b>");
 

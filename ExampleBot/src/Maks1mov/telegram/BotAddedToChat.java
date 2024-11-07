@@ -5,7 +5,6 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 
 import Maks1mov.Main;
 import Maks1mov.logger.RecordLevel;
-import Maks1mov.telegram.utils.BotUtils;
 
 public class BotAddedToChat {
 	
@@ -34,7 +33,7 @@ public class BotAddedToChat {
 			Main.getLogger().log(RecordLevel.TELEGRAM, "Bot was added to Group. groupID: " + groupID + " by userID: " + userID + " from user " + username, true);
 
 			// Отправляем сообщение
-			BotUtils.sendTextMessage(groupID, "Привет, <b>" + username + "</b>\n");
+//			BotUtils.sendTextMessage(groupID, "Привет, <b>" + username + "</b>\n");
 			
 			
 			

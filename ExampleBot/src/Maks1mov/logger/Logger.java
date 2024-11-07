@@ -7,12 +7,16 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import lombok.Getter;
+
 public class Logger {
 
-	private File log;
-
+	@Getter private Logger logg;
+			private File log;
+	
 	public Logger() {
 		
+		logg = this;
 		log = new File("core.log");
 		
 		if (!log.exists()) {
@@ -33,30 +37,17 @@ public class Logger {
 		return "[" + date.format(now) + "]" + " [" + level.toString() + "] " + s;
 	}
 
-	public void log(RecordLevel level, String s) {
-		
-		String str = getLogFormat(level, s);
-		System.out.println(str);
-		
-		try {
-			addRecord(log, level, s);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
 	public void log(RecordLevel level, String s, boolean command) {
 		
 		String str = getLogFormat(level, s);
 		System.out.println(str);
 
-		if (command) {
+		if (command)
 			System.out.print(">");
-		}
 
 		try {
 			addRecord(log, level, s);
-		} catch (Exception e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -67,11 +58,10 @@ public class Logger {
 
 		writer = new BufferedWriter(new FileWriter(log, true));
 
-		if (level != RecordLevel.RAW) {
+		if (level != RecordLevel.RAW)
 			writer.write(getLogFormat(level, line));
-		} else {
-			writer.write(line);
-		}
+		
+		else writer.write(line);
 
 		writer.newLine();
 		writer.close();

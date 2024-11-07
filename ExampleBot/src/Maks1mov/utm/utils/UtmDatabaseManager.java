@@ -85,7 +85,7 @@ public class UtmDatabaseManager {
         return false;
     }
 	
-	private void loadAllUtms(boolean clearUtmTagsInArraylist) {
+	void loadAllUtms(boolean clearUtmTagsInArraylist) {
 		
 		if(clearUtmTagsInArraylist)
 			storage.getAllUtmTags().clear();

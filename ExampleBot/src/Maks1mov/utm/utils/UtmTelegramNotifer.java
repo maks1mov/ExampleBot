@@ -23,6 +23,8 @@ public class UtmTelegramNotifer {
 
 	public void sendInfoToTelegramUser(String chatId, Bot bot) {
 
+		utmStorage.getUtmDatabaseManager().loadAllUtms(true);
+		
 		String timeStamp = new SimpleDateFormat("dd.MM.yyyy").format(Calendar.getInstance().getTime());
 		String dayOfWeek = LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime())).getDayOfWeek().getDisplayName(TextStyle.FULL, new Locale("ru"));
 		
@@ -39,7 +41,7 @@ public class UtmTelegramNotifer {
 					  + " 📆 Переходов за неделю: <b>" + utmStorage.getUtmDatabaseManager().getAllUtmJoinsforWeek() + " пользователей </b> \n"
 					  + " 🗓 Переходов за месяц: <b>" + utmStorage.getUtmDatabaseManager().getAllUtmJoinsforMonth() + " пользователей </b> \n"
 					  + "\n"
-					  + " <b>💸 ОПЛАТ: " + utmStorage.getUtmDatabaseManager().getAllUtmPayments() + " пользователей </b>\n"
+					  + " 💸 Всего оплат: <b>" + utmStorage.getUtmDatabaseManager().getAllUtmPayments() + " пользователей </b>\n"
 					  + "\n"
 					  + " 😳 Переходов за все время: <b>" + utmStorage.getUtmDatabaseManager().getAllUtmJoinsTotal() + " пользователей </b>");
 
@@ -52,6 +54,8 @@ public class UtmTelegramNotifer {
 	
 	public void sendInfoToTelegramUserById(String chatId, int id, Bot bot) {
 
+		utmStorage.getUtmDatabaseManager().loadAllUtms(true);
+		
 		UtmTag tag = null;
 		SendMessage message = new SendMessage();
 
@@ -84,7 +88,8 @@ public class UtmTelegramNotifer {
 				  + " 📆 Переходов за неделю: <b>" + tag.getJoinsForWeek() + " пользователей </b> \n"
 				  + " 🗓 Переходов за месяц: <b>" + tag.getJoinsForMonth() + " пользователей </b> \n"
 				  + "\n"
-				  + " <b>💸 ОПЛАТ: " + tag.getPayments() + " пользователей </b>\n"
+				  + " 🚗 Источник трафика: <b>" + tag.getTrafficName() + "</b> \n"
+				  + " 💸 Оплат по трафику: <b>" + tag.getPayments() + " пользователей </b>\n"
 				  + "\n"
 				  + " 😳 Переходов за все время: <b>" + tag.getJoinsForTotal() + " пользователей </b>");
 
